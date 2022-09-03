@@ -26,8 +26,15 @@ public class Assignment4 {
             int mul = num1 * num2;
             System.out.println(num1 + " * " + num2 + " = " + mul);
         }else if(op == 4){
-            int div = num1 / num2;
-            System.out.println(num1 + " / " + num2 + " = " + div);
+            if(num2 != 0)
+            {
+                int div = num1 / num2;
+                System.out.println(num1 + " / " + num2 + " = " + div);
+            }
+            else {
+                System.out.println("Cannot divide by 0");
+            }
+
         }
         else {
             System.out.println("There was some error.");
