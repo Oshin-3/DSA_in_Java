@@ -11,12 +11,8 @@ public class PlusOne {
         int temp = 0;
 
         if (digits.length == 1 && digits[0] == 9) {
-            temp = digits[0] + 1;
-            while (temp != 0)
-            {
-                plusOne.add(temp % 10);
-                temp = temp / 10;
-            }
+            plusOne.add(0);
+            plusOne.add(1);
         }
         else
         {
@@ -27,11 +23,8 @@ public class PlusOne {
                     temp = digits[i] + carry;
                     if (temp > 9)
                     {
-                        while (temp != 0)
-                        {
-                            plusOne.add(temp % 10);
-                            temp = temp / 10;
-                        }
+                        plusOne.add(0);
+                        plusOne.add(1);
                     }
                     else
                     {
@@ -43,7 +36,7 @@ public class PlusOne {
                     temp = digits[i] + 1;
                     if (temp > 9)
                     {
-                        plusOne.add(temp % 10);
+                        plusOne.add(0);
                         carry = 1;
                     }
                     else
@@ -56,7 +49,7 @@ public class PlusOne {
                     temp = digits[i] + carry;
                     if (temp > 9)
                     {
-                        plusOne.add(temp % 10);
+                        plusOne.add(0);
                         carry = 1;
                     }
                     else
@@ -86,7 +79,7 @@ public class PlusOne {
 
     public static void main(String[] args) {
 
-        int[] input = {9,8,9};
+        int[] input = {9,9,9};
         int[] output = plusOne(input);
         System.out.println("Output: " + Arrays.toString(output));
     }
