@@ -1,5 +1,5 @@
 package com.Search;
-
+// largest number smaller than the target
 public class FloorOfNumber {
 
     public static int floorOfNumber(int[] arr, int target)
@@ -21,8 +21,11 @@ public class FloorOfNumber {
         return arr[end];
     }
 
+
     public static void main(String[] args) {
         int output = floorOfNumber(new int[]{2,3,5,9,14,16,18}, 15);
         System.out.println("Output: " + output);
+
+
     }
 }
