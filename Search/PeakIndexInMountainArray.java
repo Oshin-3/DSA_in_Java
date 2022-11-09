@@ -9,19 +9,17 @@ public class PeakIndexInMountainArray {
 
         int start = 0;
         int end = arr.length - 1;
-        int mid = start + (end - start) / 2;
 
-        while (arr[mid-1] > arr[mid])
+        while (start < end)
         {
-            mid = mid - 1;
+            int mid = start + (end - start) / 2;
+            if(arr[mid] > arr[mid+1])
+                end = mid;
+            else
+                start = mid + 1;
         }
 
-        while (arr[mid+1] > arr[mid])
-        {
-            mid = mid + 1;
-        }
-
-        return mid;
+        return start;
     }
 
     public static void main(String[] args) {
