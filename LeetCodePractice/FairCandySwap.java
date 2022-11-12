@@ -5,44 +5,36 @@ import java.util.Arrays;
 //https://leetcode.com/problems/fair-candy-swap/
 public class FairCandySwap {
 
-    public static int sum(int[] arr)
+    public static int linearSearch(int[] arr, int target)
     {
-        int sum = 0;
         for (int i = 0; i < arr.length; i++) {
-            sum += arr[i];
+            if(arr[i] == target)
+                return target;
         }
 
-        return sum;
+        return -1;
     }
 
 
     public static int[] fairCandySwap(int[] aliceSizes, int[] bobSizes) {
 
-        int start = sum(aliceSizes);
-        int end = sum(bobSizes);
-        int i = 0, j = 0;
-        while (i <= aliceSizes.length || j <= bobSizes.length)
-        {
-            int mid = start + (end - start) / 2;
-            int aTemp = aliceSizes[i];
-            int bTemp = bobSizes[j];
-            // swap
-            aliceSizes[i] = bTemp;
-            bobSizes[j] = aTemp;
+      int aliceSum = 0;
+      int bobSum = 0;
 
-            if(sum(aliceSizes) == mid && sum(bobSizes) == mid)
-                return new int[]{aTemp, bTemp};
-            else
-            {
-                // swap
-                aliceSizes[i] = aTemp;
-                bobSizes[j] = bTemp;
-            }
+        for (int i = 0; i < aliceSizes.length; i++) {
+            aliceSum += aliceSizes[i];
+        }
 
-            if (aliceSizes.length > 1 && aliceSizes.length >= i)
-                i++;
-            if (bobSizes.length > 1 && bobSizes.length >= j)
-                j++;
+        for (int i = 0; i < bobSizes.length; i++) {
+            bobSum += bobSizes[i];
+        }
+
+        for (int i = 0; i < aliceSizes.length; i++) {
+            int x = aliceSizes[i];
+            int y = ((bobSum - aliceSum) + (2 * x)) / 2;
+
+            if(linearSearch(bobSizes, y) != -1)
+                return new int[]{x, y};
         }
 
         return new int[]{-1, -1};
