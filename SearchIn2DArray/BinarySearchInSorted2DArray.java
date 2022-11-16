@@ -97,6 +97,6 @@ public class BinarySearchInSorted2DArray {
                 {4, 5, 6},
                 {7, 8, 9}
         };
-        System.out.println(Arrays.toString(BinarySearchInSortedMatrix(arr,6)));
+        System.out.println(Arrays.toString(BinarySearchInSortedMatrix(arr,62)));
     }
 }
