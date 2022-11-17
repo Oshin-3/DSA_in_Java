@@ -55,8 +55,8 @@ public class SearchInRotatedSortedArray {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{6,7,1,2,3,4,5};
-        int output = search(nums, 6);
+        int[] nums = new int[]{2,5,6,0,0,1,2};
+        int output = search(nums, 0);
         System.out.println("Output: " + output);
     }
 }

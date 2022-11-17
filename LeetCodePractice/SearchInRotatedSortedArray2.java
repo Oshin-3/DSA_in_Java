@@ -2,7 +2,7 @@ package com.LeetCodePractice;
 
 public class SearchInRotatedSortedArray2 {
 
-    public static boolean binary(int[] nums, int target, int start, int end)
+    public static boolean binarySearch(int[] nums, int target, int start, int end)
     {
         while (start <= end) {
             int mid = start + (end - start) / 2;
@@ -18,59 +18,56 @@ public class SearchInRotatedSortedArray2 {
     }
 
 
-    public static int pivot(int[] nums)
+    public static int findPivot(int[] nums)
     {
         int start = 0;
         int end = nums.length - 1;
 
         while (start < end)
         {
-            int mid = start + (end - start) / 2;
-            if(nums[start] == nums[end])
+            int mid = start + (end - start)/2;
+            if(mid < end && nums[mid] > nums[mid+1])
+                return mid;
+
+            if(mid > start && nums[mid] < nums[mid-1])
+                return mid - 1;
+
+            if(nums[start] == nums[mid] && nums[end] == nums[mid])
             {
-                start++; end--;
+                // skip the duplicated.
+                // if start is the pivot
+                if (nums[start] > nums[start+1])
+                    return start;
+                start++;
+                //if end is the pivot
+                if (nums[end] < nums[end-1])
+                    return end - 1;
+            }// left is sorted then pivot is in right
+            else if (nums[start] < nums[mid] || nums[start] == nums[mid] && nums[mid] > nums[end])
+            {
+                start = mid + 1;
             }
             else
             {
-                if(mid < end && nums[mid] >= nums[mid+1])
-                    return mid;
-
-                if(mid > start && nums[mid] < nums[mid-1])
-                    return mid - 1;
-
-                if(nums[start] < nums[end] && nums[start] == nums[mid])
-                    start = mid + 1;
-                else
-                    end = mid - 1;
+                end = mid - 1;
             }
         }
 
-        return start;
+        return -1;
     }
 
 
     public static boolean search(int[] nums, int target) {
-        // we have to find pivot index
-        boolean ans = false;
+        // we have to find pivot
+        int pivot = findPivot(nums);
+        boolean result = false;
 
-        int pivot = pivot(nums);
+        //check in left side
+        result = binarySearch(nums, target, 0, pivot);
+        if(!result)
+            result = binarySearch(nums, target, pivot+1, nums.length-1);
 
-//        if(pivot == -1)
-//        {
-//            ans = binary(nums, target, 0, nums.length-1);
-//            return ans;
-//        }
-//        else
-//        {
-            ans = binary(nums, target, 0, pivot);
-//        }
-
-
-        if(!ans)
-            ans = binary(nums, target, pivot+1, nums.length-1);
-
-        return ans;
-
+        return result;
     }
 
     public static void main(String[] args) {
