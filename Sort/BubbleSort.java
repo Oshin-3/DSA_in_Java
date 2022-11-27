@@ -4,13 +4,10 @@ import java.util.Arrays;
 
 public class BubbleSort {
 
-//    public void swap(int[] arr, int curIndex, int preIndex)
-//    {
-//        int temp = arr[curIndex];
-//        arr[curIndex] = arr[preIndex];
-//        arr[preIndex] = temp;
-//    }
-
+    public BubbleSort(int[] arr)
+    {
+        bubbleSort(arr);
+    }
 
     public void bubbleSort(int[] arr){
 
@@ -20,8 +17,8 @@ public class BubbleSort {
                 if (arr[j] < arr[j-1])
                 {
                     //swap
-                    Swap s = new Swap();
-                    s.swap(arr, j, j - 1);
+                    Swap s = new Swap(arr, j, j - 1);
+                    //s.swap(arr, j, j - 1);
                     swapped = true;
                 }
             }

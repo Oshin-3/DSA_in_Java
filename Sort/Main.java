@@ -8,7 +8,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("---------- MENU ----------");
-        System.out.println("Select Sorting Algorithm: \n1. Bubble Sort\n2. Selection Sort");
+        System.out.println("Select Sorting Algorithm: \n1. Bubble Sort\n2. Selection Sort\n3. Insertion Sort");
         int choice = sc.nextInt();
 
         System.out.println("Enter length of the array: ");
@@ -22,11 +22,11 @@ public class Main {
 
         switch (choice)
         {
-            case 1: BubbleSort bubbleSort = new BubbleSort();
-                    bubbleSort.bubbleSort(arr);
+            case 1: BubbleSort bubbleSort = new BubbleSort(arr);
                     break;
-            case 2: SelectionSort selectionSort = new SelectionSort();
-                    selectionSort.selectionSort(arr);
+            case 2: SelectionSort selectionSort = new SelectionSort(arr);
+                    break;
+            case 3: InsertionSort insertionSort = new InsertionSort(arr);
                     break;
             default:
                 System.out.println("Invalid input");
