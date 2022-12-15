@@ -15,6 +15,7 @@ public class SelectionSort {
             int max = max(arr, arr.length - 1 - i);
 
             Swap s = new Swap(arr, max, arr.length - 1 - i);
+
             //s.swap(arr, max, arr.length - 1 - i);
             }
         System.out.println("Output: " + Arrays.toString(arr));
