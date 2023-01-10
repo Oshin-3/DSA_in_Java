@@ -35,6 +35,15 @@ public class Main {
         //It will print "Math Three Three"
         System.out.println(e + " " + f + " " + g);
 
+        String an = "Hello";
+        an = "Dheeraj";
+        System.out.println(an);
 
+        String and = "";
+        for (int i = 0; i < 26; i++) {
+            char ch = (char)('a' + i);
+            and += String.valueOf(ch);
+        }
+        System.out.println(and);
     }
 }
